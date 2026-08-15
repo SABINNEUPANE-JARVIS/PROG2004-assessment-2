@@ -7,7 +7,6 @@ public class Visitor implements Comparable<Visitor> {
     private String name;
     private int age;
     private String membershipType;
-
     /**
      * Creates a Visitor object.
      *
@@ -28,7 +27,7 @@ public class Visitor implements Comparable<Visitor> {
             throw new IllegalArgumentException(
                     "Visitor name cannot be empty.");
         }
-
+  
         if (age < 0) {
             throw new IllegalArgumentException(
                     "Visitor age cannot be negative.");
