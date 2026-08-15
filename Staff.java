@@ -13,7 +13,7 @@ public class Staff {
      * @throws IllegalArgumentException if any supplied information is invalid
      */
     public Staff(String id, String name, int age, String role) {
-     // ID must be purely numeric per the brief's requirement
+     // ID must be purely numeric 
           if (id == null || !id.matches("[0-9]+")) {
                 throw new IllegalArgumentException
                 ("Staff ID must contain numbers only.");
@@ -67,6 +67,35 @@ public class Staff {
     public String getRole() {
         return role;
     }
+    /**
+     * Performs an inspection on any Inspectable item.
+     * @param item the item to inspect
+     * @return the inspection result
+    */
+    public String performInspection(Inspectable item) {
+        if (item == null) {
+            return "Cannot inspect null item";
+        }
+        
+        System.out.println("Staff " + name + " is inspecting " + item.getInspectionName());
+        
+        // Step 1: Close the item for inspection
+        item.closeForInspection();
+        
+        // Step 2: Perform the inspection (simulated)
+        String result = "Inspection of " + item.getInspectionName() + 
+                        " completed by " + name + ": All systems operational";
+        System.out.println(result);
+        
+        // Step 3: Record the result on the item
+        item.recordInspectionResult(result);
+        
+        // Step 4: Reopen the item
+        item.reopenAfterInspection();
+        
+        return result;
+    }
+    
     /**
      * Returns a readable representation of the staff member.
      *
